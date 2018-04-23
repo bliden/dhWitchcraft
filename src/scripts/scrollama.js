@@ -47,7 +47,7 @@ function handleStepEnter(response) {
     // update graphic based on step here
     const stepData = Array.from(step).map((item)=> item.dataset.step);
 
-    console.dir(response.element.dataset.step);
+    // console.dir(response.element.dataset.step);
     chart.querySelector('p').textContent = response.index + 1;
 }
 
