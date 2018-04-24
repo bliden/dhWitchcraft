@@ -17,16 +17,18 @@ function handleResize() {
     });
 
     // 2. update height of graphic elem
-    // const bodyWidth = document.querySelector('body').offsetWidth
+    const bodyWidth = document.querySelector('body').offsetWidth
 
     graphic.style.height = window.innerHeight + 'px';
 
     // 3. update width of chart by subrtacting from text width
     const chartMargin = 0;
     const textWidth = text.offsetWidth;
-    const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
+    // const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
+    const chartWidth = bodyWidth - textWidth - chartMargin - (bodyWidth / 10);
+    
     // make the height of 1/2 of viewport
-    const chartHeight = Math.floor(window.innerHeight / 2);
+    const chartHeight = Math.floor(window.innerHeight / 1.5);
 
     chart.style.width = chartWidth + 'px';
     chart.style.height = chartHeight + 'px';

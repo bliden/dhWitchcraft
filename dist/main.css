@@ -115,7 +115,7 @@ nav a {
         -moz-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
 
-        z-index: -1;
+        /* z-index: -1; */
 
     }
 
@@ -157,14 +157,17 @@ nav a {
     .scroll__graphic .chart img {
         border: 3px solid rgba(0, 0, 0, .2);
         padding-right: 10px;
+        transition: .3s opacity,
+                    .3s filter;
     }
 
     .scroll__text {
         padding: 0 1rem;
         max-width: 30rem;
 
-        padding: 10% 10% 0 10%;
+        padding: 10% 0 0 10%;
         line-height: 1.25;
+        transition: .3s filter;
     }
 
     .step {
@@ -176,6 +179,9 @@ nav a {
         opacity: 1;
     }
 
+    .blurry {
+        filter: blur(10px);
+    }
 }
 
 /* END SCROLL SPECIFIC CSS */
