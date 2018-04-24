@@ -55,7 +55,7 @@ nav a {
 /* HERO STYLES */
 
 .hero {
-    height: 90vh;
+    height: 87vh;
     margin-top: 3vh;
 }
 
@@ -63,7 +63,7 @@ nav a {
     height: 40vh;
     max-width: 800px;
     opacity: 1;
-    transition: 1.5s all ease-in-out .25s;
+    transition: 1.5s all ease-out .25s;
 }
 
 .title {
@@ -98,66 +98,84 @@ nav a {
 
 /* SCROLL SPECIFIC CSS */
 
-#scroll {
-    position: relative;
-    border-top: 1px dashed #000;
-    border-bottom: 1px dashed #000;
-}
+@media screen and (min-width: 800px){
+    #scroll {
+        position: relative;
+        border-top: 1px dashed #000;
+        border-bottom: 1px dashed #000;
+    }
 
-.scroll__graphic {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: auto;
-    width: 100%;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
+    .scroll__graphic {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: auto;
+        width: 100%;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
 
-.scroll__graphic.is-fixed {
-    position: fixed;
-}
+        z-index: -1;
 
-.scroll__graphic.is-bottom {
-    bottom: 0;
-    top: auto;
-}
+    }
 
-.scroll__graphic .chart {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
+    .scroll__graphic.is-fixed {
+        position: fixed;
+    }
 
-.scroll__text {
-    padding: 0 1rem;
-    max-width: 30rem;
+    .scroll__graphic.is-bottom {
+        bottom: 0;
+        top: auto;
+    }
 
-    margin-left: 20%;
-    line-height: 1.15;
-}
+    .scroll__graphic .preview {
+        position: absolute;
+        right: 3rem;
+        top: 3rem;
+    }
 
-.step {
-    margin: 10rem 0;
-    opacity: 0;
-    transition: all .5s;
-}
+    .preview {
+        width: 50%;
+        height: 50%;
+        border: 1px dashed black;
+        background-color: #7575;
+    }
 
-.step.is-active {
-    opacity: 1;
-}
+    .scroll__graphic .chart {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
 
-.chart p {
-    width: 35rem;
-    height: 20rem;
-    border: 1px solid grey;
-    background-color: #e0e0e0;
-    margin: 0 auto;
-    vertical-align: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scroll__graphic .chart img {
+        border: 3px solid rgba(0, 0, 0, .2);
+        padding-right: 10px;
+    }
+
+    .scroll__text {
+        padding: 0 1rem;
+        max-width: 30rem;
+
+        padding: 10% 10% 0 10%;
+        line-height: 1.25;
+    }
+
+    .step {
+        opacity: .3;
+        transition: all 1.5s;
+    }
+
+    .step.is-active {
+        opacity: 1;
+    }
+
 }
 
 /* END SCROLL SPECIFIC CSS */

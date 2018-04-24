@@ -10,18 +10,19 @@ const scroller = scrollama();
 
 function handleResize() {
     // 1. update height of step elems for room between steps
-    const stepHeight = Math.floor(window.innerHeight * 0.75);
+    // const stepHeight = Math.floor(window.innerHeight * 0.75);
+    const stepHeight = Math.floor(window.innerHeight * .5);
     step.forEach(function(singleStep){
         singleStep.style.height = stepHeight + 'px';
     });
 
     // 2. update height of graphic elem
-    const bodyWidth = document.querySelector('body').offsetWidth
+    // const bodyWidth = document.querySelector('body').offsetWidth
 
     graphic.style.height = window.innerHeight + 'px';
 
     // 3. update width of chart by subrtacting from text width
-    const chartMargin = 32;
+    const chartMargin = 0;
     const textWidth = text.offsetWidth;
     const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
     // make the height of 1/2 of viewport
@@ -48,7 +49,7 @@ function handleStepEnter(response) {
     const stepData = Array.from(step).map((item)=> item.dataset.step);
 
     // console.dir(response.element.dataset.step);
-    chart.querySelector('p').textContent = response.index + 1;
+    // chart.querySelector('p').textContent = response.index + 1;
 }
 
 function handleContainerEnter(response) {
@@ -83,7 +84,7 @@ function init(){
             graphic: '.scroll__graphic', // the graphic
             text: '.scroll__text', // the step container
             step: '.scroll__text .step', // the step elems
-            offset: 0.5, // set trigger @ 50% of screen
+            offset: 0.7, // set trigger @ 50% of screen
             // debug: true, // display the trigger for testing
         })
         .onStepEnter(handleStepEnter)
