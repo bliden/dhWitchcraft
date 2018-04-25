@@ -1,4 +1,5 @@
 import scrollama from 'scrollama';
+import { driftPanel } from './driftZoom';
 
 const container = document.querySelector('#scroll');
 const graphic = document.querySelector('.scroll__graphic');
@@ -33,8 +34,12 @@ function handleResize() {
     chart.style.width = chartWidth + 'px';
     chart.style.height = chartHeight + 'px';
 
+    driftPanel.zoomFactor = 10 * ( 400 / bodyWidth );
+
     // 4. tell scrollama to update new elem dmensions
     scroller.resize();
+    console.log('scrollama page zoom factor: ', driftPanel.zoomFactor);
+
 }
 
 function handleStepEnter(response) {

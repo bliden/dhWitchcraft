@@ -1,11 +1,12 @@
 import Drift from 'drift-zoom';
 
-var image = document.querySelector('#image');
-var text = document.querySelector('.scroll__text');
+const image = document.querySelector('#image');
+const text = document.querySelector('.scroll__text');
 
 function onShow(){
     image.style.opacity = .5;
-    image.classList.toggle('blurry');
+	image.classList.toggle('blurry');
+	// image.width = '1000px';
     text.classList.toggle('blurry');
 }
 
@@ -69,16 +70,12 @@ var options = {
 	touchDelay: 0,
 	// If true, a bounding box will show the area currently being previewed
 	// during mouse hover
-	hoverBoundingBox: true,
+	hoverBoundingBox: false,
 	// If true, a bounding box will show the area currently being previewed
 	// during touch events
 	touchBoundingBox: false,
 };
 
-// new Drift(image, options);
-new Drift(image, options);
+let driftPanel = new Drift(image, options);
 
-// document.addEventListener('mousemove', (e) => {
-//     console.log('mouse hovering over: ', e.target);
-//     console.dir(e);
-// })
+export { driftPanel };
