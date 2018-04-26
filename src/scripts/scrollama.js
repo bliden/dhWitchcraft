@@ -1,5 +1,6 @@
 import scrollama from 'scrollama';
 import { driftPanel } from './driftZoom';
+import { imagePane, imageArray } from './imagePane';
 
 const container = document.querySelector('#scroll');
 const graphic = document.querySelector('.scroll__graphic');
@@ -11,22 +12,25 @@ const scroller = scrollama();
 
 function handleResize() {
     // 1. update height of step elems for room between steps
-    // const stepHeight = Math.floor(window.innerHeight * 0.75);
-    const stepHeight = Math.floor(window.innerHeight * .5);
+
+    const stepHeight = Math.floor(window.innerHeight * 0.75);
     step.forEach(function(singleStep){
         singleStep.style.height = stepHeight + 'px';
     });
 
     // 2. update height of graphic elem
-    const bodyWidth = document.querySelector('body').offsetWidth
 
     graphic.style.height = window.innerHeight + 'px';
 
     // 3. update width of chart by subrtacting from text width
-    const chartMargin = 0;
+    console.dir(text);
     const textWidth = text.offsetWidth;
+    console.dir(document.body);
+    const bodyWidth = document.body.offsetWidth;
     // const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
-    const chartWidth = bodyWidth - textWidth - chartMargin - (bodyWidth / 10);
+    const chartWidth = bodyWidth - textWidth - (bodyWidth / 10);
+
+    console.log(chartWidth, bodyWidth, textWidth );
     
     // make the height of 1/2 of viewport
     const chartHeight = Math.floor(window.innerHeight / 1.5);
@@ -34,11 +38,11 @@ function handleResize() {
     chart.style.width = chartWidth + 'px';
     chart.style.height = chartHeight + 'px';
 
+    // zoom factor recalced on resize. smaller screen > larger zoom
     driftPanel.zoomFactor = 10 * ( 400 / bodyWidth );
 
     // 4. tell scrollama to update new elem dmensions
     scroller.resize();
-    console.log('scrollama page zoom factor: ', driftPanel.zoomFactor);
 
 }
 
@@ -49,11 +53,21 @@ function handleStepEnter(response) {
     step.forEach(function(singleStep, idx){
         if(idx === response.index){
             singleStep.classList.add('is-active');
-        }
+        };
+    });
+
+    // change img displayed based on active step
+    imageArray.forEach(function(image, idx){
+        if(idx === response.index){
+            imagePane.src = image.src;
+            imagePane.dataset.zoom = image.zoom;
+            imagePane.alt = image.alt;
+        };
     });
 
     // update graphic based on step here
-    const stepData = Array.from(step).map((item)=> item.dataset.step);
+    // const stepData = Array.from(step).map((item)=> item.dataset.step);
+    // console.log(stepData);
 
     // console.dir(response.element.dataset.step);
     // chart.querySelector('p').textContent = response.index + 1;
@@ -102,4 +116,5 @@ function init(){
         window.addEventListener('resize', handleResize)
 }
 
+// document.addEventListener('DOMContentLoaded', init);
 init();

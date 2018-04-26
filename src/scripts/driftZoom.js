@@ -1,18 +1,19 @@
 import Drift from 'drift-zoom';
+import { imagePane } from './imagePane';
 
-const image = document.querySelector('#image');
 const text = document.querySelector('.scroll__text');
 
+// fns below blur & transparency the text & img on zoom
+
 function onShow(){
-    image.style.opacity = .5;
-	image.classList.toggle('blurry');
-	// image.width = '1000px';
+    imagePane.style.opacity = .5;
+	imagePane.classList.toggle('blurry');
     text.classList.toggle('blurry');
 }
 
 function onHide(){
-    image.style.opacity = 1;
-    image.classList.toggle('blurry');
+    imagePane.style.opacity = 1;
+    imagePane.classList.toggle('blurry');
     text.classList.toggle('blurry');
 }
 
@@ -76,6 +77,8 @@ var options = {
 	touchBoundingBox: false,
 };
 
-let driftPanel = new Drift(image, options);
+// pass in the image pane to be dynamicaly loaded. (first arg)
+
+let driftPanel = new Drift(imagePane, options);
 
 export { driftPanel };
