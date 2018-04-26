@@ -83,7 +83,7 @@ nav a {
 
 .byline span {
     font-style: italic;
-    margin-right: 1rem;
+    margin-right: .3rem;
 }
 
 .abstract-card {
@@ -173,7 +173,7 @@ nav a {
     transition: all 1.5s;
 }
 
-.is-active {
+.step.is-active {
     opacity: 1;
 }
 
