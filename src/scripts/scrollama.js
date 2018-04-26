@@ -50,20 +50,26 @@ function handleStepEnter(response) {
     // response = { element, direction, index }
 
     // fade in current step
-    step.forEach(function(singleStep, idx){
-        if(idx === response.index){
-            singleStep.classList.add('is-active');
-        };
-    });
+    // step.forEach(function(singleStep, idx){
+    //     if(idx === response.index){
+    //         singleStep.classList.add('is-active');
+    //     };
+    // });
+
+    step[response.index].classList.add('is-active');
 
     // change img displayed based on active step
-    imageArray.forEach(function(image, idx){
-        if(idx === response.index){
-            imagePane.src = image.src;
-            imagePane.dataset.zoom = image.zoom;
-            imagePane.alt = image.alt;
-        };
-    });
+    // imageArray.forEach(function(image, idx){
+    //     if(idx === response.index){
+    //         imagePane.src = image.src;
+    //         imagePane.dataset.zoom = image.zoom;
+    //         imagePane.alt = image.alt;
+    //     };
+    // });
+
+    imagePane.src = imageArray[response.index].src;
+    imagePane.dataset.zoom = imageArray[response.index].zoom;
+    imagePane.alt = imageArray[response.index].alt;
 
     // update graphic based on step here
     // const stepData = Array.from(step).map((item)=> item.dataset.step);
