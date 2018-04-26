@@ -181,4 +181,52 @@ nav a {
     filter: blur(10px);
 }
 
-/* END SCROLL SPECIFIC CSS */
+/* CITATION POPUP CSS */
+
+.citation {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted var(--main-font-900); /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.citation .citationtext {
+    visibility: hidden;
+    background-color: var(--main-font-900);
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+
+    top: 125%;
+    left: 25%;
+    width: 240px;
+    /* half of width: */
+    margin-left: -60px;
+    transition: .5s all;
+}
+
+.citationtext p {
+    margin: 0.5rem 1rem;
+}
+
+.citation:hover .citationtext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.citation .citationtext::after {
+    z-index: 1;
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 25%;
+    margin-left: 5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
