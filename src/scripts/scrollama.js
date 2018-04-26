@@ -122,5 +122,5 @@ function init(){
         window.addEventListener('resize', handleResize)
 }
 
-// document.addEventListener('DOMContentLoaded', init);
-init();
+window.addEventListener('load', init);
+// init();

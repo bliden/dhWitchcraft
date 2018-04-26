@@ -5,6 +5,19 @@
     --main-font-700: #757575;
 }
 
+/* ANIMATIONS */
+
+@keyframes titlefadein {
+    from {
+        opacity: 0;
+        margin-left: 10rem
+    }
+    to {
+        opacity: 1;
+        margin-left: 0rem;
+    }
+}
+
 /* GENERAL STYLES */
 
 html {
@@ -62,9 +75,12 @@ nav a {
 .title-card {
     height: 40vh;
     max-width: 800px;
-    opacity: 1;
+    /* opacity: 1;
     transition: 1.5s margin-left ease-out .25s,
-                1.5s opacity ease-out .25s;
+                1.5s opacity ease-out .25s; */
+
+    animation: titlefadein 1.5s ease-out .25s 1;
+    /* animation-name: titlefade     */
 }
 
 .title {
@@ -75,11 +91,11 @@ nav a {
     margin: 0;
     padding: 1rem 0;
 }
-
+/* 
 .is-transitioning {
     margin-left: 10rem;
     opacity: 0;
-}
+} */
 
 .byline span {
     font-style: italic;
@@ -157,6 +173,8 @@ nav a {
     padding-right: 10px;
     transition: .3s opacity,
                 .3s filter;
+    /* keeps initial load from hitting above the fold */
+    /* animation: chartfadein 1s ease-in 5s 1; */
 }
 
 .scroll__text {
