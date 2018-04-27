@@ -29,6 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
 }
 
+em {
+    font-style: italic;
+}
+
 a {
     text-decoration: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0);
@@ -98,9 +102,17 @@ nav a {
     margin-right: .3rem;
 }
 
+.byline p {
+    margin: 0;
+}
+
 .abstract-card {
-    line-height: 1.35;
+    line-height: 1.8;
     margin-top: 5%;
+}
+
+.abstract-card p::first-line {
+    padding-left: 1rem;
 }
 
 /* END SECTION STYLES */
@@ -153,7 +165,8 @@ nav a {
 
 .scroll__graphic .chart {
     position: absolute;
-    right: 5%;
+    /* right: 5%; */
+    right: 1rem;
     top: 50%;
     -moz-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -164,12 +177,12 @@ nav a {
     align-items: center;
 }
 
-.scroll__graphic .chart img {
+/* .scroll__graphic .chart img {
     border: 3px solid rgba(0, 0, 0, .2);
     padding-right: 10px;
     transition: .3s opacity,
                 .3s filter;
-}
+} */
 
 .scroll__text {
     padding: 0 1rem;
@@ -191,6 +204,7 @@ nav a {
 
 .blurry {
     filter: blur(10px);
+    opacity: .5;
 }
 
 .driftImg {
@@ -198,6 +212,12 @@ nav a {
     opacity: 0;
     visibility: hidden;
     display: none;
+    width: 95%;
+
+    border: 3px solid rgba(0, 0, 0, .2);
+    padding-right: 10px;
+    transition: .3s opacity,
+                .3s filter;
 }
 
 .driftImg.is-active {

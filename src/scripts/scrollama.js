@@ -25,10 +25,10 @@ function handleResize() {
 
     const textWidth = text.offsetWidth;
     const bodyWidth = document.body.offsetWidth;
-    const chartWidth = bodyWidth - textWidth - (bodyWidth / 10);
+    const chartWidth = bodyWidth - textWidth - 32;
     
     // make the height of 1/2 of viewport
-    const chartHeight = Math.floor(window.innerHeight / 1.5);
+    const chartHeight = Math.floor(window.innerHeight * .95);
 
     chart.style.width = chartWidth + 'px';
     chart.style.height = chartHeight + 'px';

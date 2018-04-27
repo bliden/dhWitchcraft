@@ -164,13 +164,6 @@ nav a {
     align-items: center;
 }
 
-.scroll__graphic .chart img {
-    border: 3px solid rgba(0, 0, 0, .2);
-    padding-right: 10px;
-    transition: .3s opacity,
-                .3s filter;
-}
-
 .scroll__text {
     padding: 0 1rem;
     max-width: 30rem;
@@ -193,11 +186,23 @@ nav a {
     filter: blur(10px);
 }
 
+/* .scroll__graphic .chart img {
+    border: 3px solid rgba(0, 0, 0, .2);
+    padding-right: 10px;
+    transition: .3s opacity,
+                .3s filter;
+} */
+
 .driftImg {
     transition: 1s all ease-out;
     opacity: 0;
     visibility: hidden;
     display: none;
+
+    border: 3px solid rgba(0, 0, 0, .2);
+    padding-right: 10px;
+    transition: .3s opacity,
+                .3s filter;
 }
 
 .driftImg.is-active {
