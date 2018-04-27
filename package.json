@@ -11,9 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "drift-zoom": "^1.2.0",
+    "file-loader": "^1.1.11",
     "intersection-observer": "^0.5.0",
     "normalize.css": "^8.0.0",
-    "scrollama": "^1.4.1"
+    "scrollama": "^1.4.1",
+    "typeface-codystar": "0.0.54",
+    "typeface-lato": "0.0.54",
+    "typeface-lora": "0.0.54"
   },
   "devDependencies": {
     "bulma": "^0.7.1",
