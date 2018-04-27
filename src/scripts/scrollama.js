@@ -1,10 +1,11 @@
 import scrollama from 'scrollama';
-import { driftPanel } from './driftZoom';
-import { imagePane, imageArray } from './imagePane';
+import { driftSet } from './driftZoom';
+// import { imagePane, imageArray } from './imagePane';
+import { imageSet, chart } from './imagePane';
 
 const container = document.querySelector('#scroll');
 const graphic = document.querySelector('.scroll__graphic');
-const chart = document.querySelector('.chart');
+// const chart = document.querySelector('.chart');
 const text = document.querySelector('.scroll__text');
 const step = document.querySelectorAll('.step');
 
@@ -23,14 +24,11 @@ function handleResize() {
     graphic.style.height = window.innerHeight + 'px';
 
     // 3. update width of chart by subrtacting from text width
-    console.dir(text);
+
     const textWidth = text.offsetWidth;
-    console.dir(document.body);
     const bodyWidth = document.body.offsetWidth;
     // const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
     const chartWidth = bodyWidth - textWidth - (bodyWidth / 10);
-
-    console.log(chartWidth, bodyWidth, textWidth );
     
     // make the height of 1/2 of viewport
     const chartHeight = Math.floor(window.innerHeight / 1.5);
@@ -39,7 +37,9 @@ function handleResize() {
     chart.style.height = chartHeight + 'px';
 
     // zoom factor recalced on resize. smaller screen > larger zoom
-    driftPanel.zoomFactor = 10 * ( 400 / bodyWidth );
+    driftSet.forEach(function(drift){
+        drift.zoomFactor = 10 * ( 400 / bodyWidth );
+    });
 
     // 4. tell scrollama to update new elem dmensions
     scroller.resize();
@@ -67,9 +67,18 @@ function handleStepEnter(response) {
     //     };
     // });
 
-    imagePane.src = imageArray[response.index].src;
-    imagePane.dataset.zoom = imageArray[response.index].zoom;
-    imagePane.alt = imageArray[response.index].alt;
+    // toggle image visibility based on idx
+    imageSet.forEach(function( image, idx){
+        if( idx === response.index ){
+            image.classList.add('is-active');
+        } else {
+            image.classList.remove('is-active');
+        }
+    });
+
+    // imagePane.src = imageArray[response.index].src;
+    // imagePane.dataset.zoom = imageArray[response.index].zoom;
+    // imagePane.alt = imageArray[response.index].alt;
 
     // update graphic based on step here
     // const stepData = Array.from(step).map((item)=> item.dataset.step);
@@ -124,3 +133,5 @@ function init(){
 
 window.addEventListener('load', init);
 // init();
+
+document.addEventListener('mouseover', console.log);

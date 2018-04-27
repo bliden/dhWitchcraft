@@ -75,12 +75,14 @@ nav a {
 .title-card {
     height: 40vh;
     max-width: 800px;
-    /* opacity: 1;
-    transition: 1.5s margin-left ease-out .25s,
-                1.5s opacity ease-out .25s; */
+    /* opacity: 0; */
 
-    animation: titlefadein 1.5s ease-out .25s 1;
-    /* animation-name: titlefade     */
+    animation-name: titlefadein;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: .25s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
 }
 
 .title {
@@ -174,7 +176,6 @@ nav a {
     transition: .3s opacity,
                 .3s filter;
     /* keeps initial load from hitting above the fold */
-    /* animation: chartfadein 1s ease-in 5s 1; */
 }
 
 .scroll__text {
@@ -199,6 +200,19 @@ nav a {
     filter: blur(10px);
 }
 
+.driftImg {
+    transition: 1s all ease-out;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+.driftImg.is-active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
 /* CITATION POPUP CSS */
 
 .citation {
@@ -207,7 +221,6 @@ nav a {
     border-bottom: 1px dotted var(--main-font-900); /* If you want dots under the hoverable text */
 }
 
-/* Tooltip text */
 .citation .citationtext {
     visibility: hidden;
     background-color: var(--main-font-900);
@@ -215,7 +228,7 @@ nav a {
     text-align: left;
     border-radius: 6px;
  
-    /* Position the tooltip text - see examples below! */
+    /* Positioning for citation */
     position: absolute;
     z-index: 1;
     opacity: 0;
@@ -223,6 +236,7 @@ nav a {
     top: 125%;
     left: 25%;
     width: 240px;
+
     /* half of width: */
     margin-left: -60px;
     transition: .5s all;

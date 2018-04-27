@@ -1,19 +1,20 @@
 import Drift from 'drift-zoom';
-import { imagePane } from './imagePane';
+// import { imagePane } from './imagePane';
+import { imageSet, chart } from './imagePane';
 
 const text = document.querySelector('.scroll__text');
 
 // fns below blur & transparency the text & img on zoom
 
 function onShow(){
-    imagePane.style.opacity = .5;
-	imagePane.classList.toggle('blurry');
+    chart.style.opacity = .5;
+	chart.classList.toggle('blurry');
     text.classList.toggle('blurry');
 }
 
 function onHide(){
-    imagePane.style.opacity = 1;
-    imagePane.classList.toggle('blurry');
+    chart.style.opacity = 1;
+    chart.classList.toggle('blurry');
     text.classList.toggle('blurry');
 }
 
@@ -78,7 +79,12 @@ var options = {
 };
 
 // pass in the image pane to be dynamicaly loaded. (first arg)
+// let driftPanel = new Drift(imagePane, options);
+const driftSet = [];
+for( let image of imageSet ){
+	let drift = new Drift(image, options);
+	driftSet.push(drift);
+}
 
-let driftPanel = new Drift(imagePane, options);
-
-export { driftPanel };
+export { driftSet };
+// export { driftPanel };
