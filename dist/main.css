@@ -75,7 +75,6 @@ nav a {
 .title-card {
     height: 40vh;
     max-width: 800px;
-    /* opacity: 0; */
 
     animation-name: titlefadein;
     animation-duration: 1.5s;
@@ -93,11 +92,6 @@ nav a {
     margin: 0;
     padding: 1rem 0;
 }
-/* 
-.is-transitioning {
-    margin-left: 10rem;
-    opacity: 0;
-} */
 
 .byline span {
     font-style: italic;
@@ -175,7 +169,6 @@ nav a {
     padding-right: 10px;
     transition: .3s opacity,
                 .3s filter;
-    /* keeps initial load from hitting above the fold */
 }
 
 .scroll__text {
@@ -218,7 +211,7 @@ nav a {
 .citation {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted var(--main-font-900); /* If you want dots under the hoverable text */
+    border-bottom: 1px dotted var(--main-font-900);
 }
 
 .citation .citationtext {

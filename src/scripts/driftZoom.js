@@ -1,5 +1,4 @@
 import Drift from 'drift-zoom';
-// import { imagePane } from './imagePane';
 import { imageSet, chart } from './imagePane';
 
 const text = document.querySelector('.scroll__text');
@@ -42,11 +41,7 @@ var options = {
 	zoomFactor: 3,
 	// A DOM element to append the non-inline ZoomPane to.
     // Required if `inlinePane !== true`.
-    
-    // paneContainer: document.body,
-    // paneContainer: document.querySelector('.chart'),
     paneContainer: document.querySelector('.scroll__graphic'),
-
 	// When to switch to an inline ZoomPane. This can be a boolean or
 	// an integer. If `true`, the ZoomPane will always be inline,
 	// if `false`, it will switch to inline when `windowWidth <= inlinePane`
@@ -78,8 +73,8 @@ var options = {
 	touchBoundingBox: false,
 };
 
-// pass in the image pane to be dynamicaly loaded. (first arg)
-// let driftPanel = new Drift(imagePane, options);
+// iterate over imageSet && set up driftZoom on all.
+
 const driftSet = [];
 for( let image of imageSet ){
 	let drift = new Drift(image, options);
@@ -87,4 +82,3 @@ for( let image of imageSet ){
 }
 
 export { driftSet };
-// export { driftPanel };

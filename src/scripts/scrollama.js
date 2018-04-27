@@ -1,11 +1,9 @@
 import scrollama from 'scrollama';
 import { driftSet } from './driftZoom';
-// import { imagePane, imageArray } from './imagePane';
 import { imageSet, chart } from './imagePane';
 
 const container = document.querySelector('#scroll');
 const graphic = document.querySelector('.scroll__graphic');
-// const chart = document.querySelector('.chart');
 const text = document.querySelector('.scroll__text');
 const step = document.querySelectorAll('.step');
 
@@ -27,7 +25,6 @@ function handleResize() {
 
     const textWidth = text.offsetWidth;
     const bodyWidth = document.body.offsetWidth;
-    // const chartWidth = graphic.offsetWidth - textWidth - chartMargin;
     const chartWidth = bodyWidth - textWidth - (bodyWidth / 10);
     
     // make the height of 1/2 of viewport
@@ -50,6 +47,7 @@ function handleStepEnter(response) {
     // response = { element, direction, index }
 
     // fade in current step
+
     // step.forEach(function(singleStep, idx){
     //     if(idx === response.index){
     //         singleStep.classList.add('is-active');
@@ -59,14 +57,6 @@ function handleStepEnter(response) {
     step[response.index].classList.add('is-active');
 
     // change img displayed based on active step
-    // imageArray.forEach(function(image, idx){
-    //     if(idx === response.index){
-    //         imagePane.src = image.src;
-    //         imagePane.dataset.zoom = image.zoom;
-    //         imagePane.alt = image.alt;
-    //     };
-    // });
-
     // toggle image visibility based on idx
     imageSet.forEach(function( image, idx){
         if( idx === response.index ){
@@ -75,17 +65,6 @@ function handleStepEnter(response) {
             image.classList.remove('is-active');
         }
     });
-
-    // imagePane.src = imageArray[response.index].src;
-    // imagePane.dataset.zoom = imageArray[response.index].zoom;
-    // imagePane.alt = imageArray[response.index].alt;
-
-    // update graphic based on step here
-    // const stepData = Array.from(step).map((item)=> item.dataset.step);
-    // console.log(stepData);
-
-    // console.dir(response.element.dataset.step);
-    // chart.querySelector('p').textContent = response.index + 1;
 }
 
 function handleContainerEnter(response) {
@@ -132,6 +111,3 @@ function init(){
 }
 
 window.addEventListener('load', init);
-// init();
-
-document.addEventListener('mouseover', console.log);
