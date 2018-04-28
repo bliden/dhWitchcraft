@@ -58,7 +58,7 @@
 html {
     font-family: 'Lora', serif;
     color: var(--main-font-900);
-    line-height: 1.5;
+    line-height: 2;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -90,6 +90,19 @@ section:first-of-type {
 
 section {
     margin-top: 5rem;
+}
+
+.dropcap {
+    float: left;
+    font-family: 'Codystar';
+    font-size: 6rem;
+    line-height: 5rem;
+    padding: 6px 8px 0 4px;
+}
+
+blockquote {
+    border-left: 1px dashed var(--main-font-900);
+    padding-left: 1rem;
 }
 
 /* HEADER STYLES */
