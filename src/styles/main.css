@@ -4,6 +4,8 @@
     --main-font-900: #212121;
     --main-font-800: #424242;
     --main-font-700: #757575;
+
+    font-size: 16px;
 }
 
 /* FONT IMPORTS */
@@ -179,13 +181,6 @@ nav a:hover {
     padding-left: 2rem;
 }
 
-/* END SECTION STYLES */
-
-.end {
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
 /* SCROLL SPECIFIC CSS */
 
 #scroll {
@@ -293,15 +288,21 @@ nav a:hover {
     display: block;
 }
 
-/* CITATION POPUP CSS */
+@media print {
+    .step {
+        opacity: 1;
+    }
+}
 
-.citation {
+/* FOOTNOTE POPUP CSS */
+
+.footnote {
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted var(--main-font-900);
 }
 
-.citation .citationtext {
+.footnote .footnotetext {
     visibility: hidden;
     background-color: var(--main-font-900);
     color: #fff;
@@ -322,16 +323,16 @@ nav a:hover {
     transition: .5s all;
 }
 
-.citationtext p {
+.footnotetext p {
     margin: 0.5rem 1rem;
 }
 
-.citation:hover .citationtext {
+.footnote:hover .footnotetext {
     visibility: visible;
     opacity: 1;
 }
 
-.citation .citationtext::after {
+.footnote .footnotetext::after {
     z-index: 1;
     content: " ";
     position: absolute;
