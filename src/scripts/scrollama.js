@@ -12,9 +12,9 @@ const scroller = scrollama();
 function handleResize() {
     // 1. update height of step elems for room between steps
 
-    const stepHeight = Math.floor(window.innerHeight * 0.75);
+    const stepHeight = Math.floor(window.innerHeight * 0.25);
     step.forEach(function(singleStep){
-        singleStep.style.height = stepHeight + 'px';
+        singleStep.style.marginBottom = `${stepHeight}px`;
     });
 
     // 2. update height of graphic elem

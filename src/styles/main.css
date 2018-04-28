@@ -1,6 +1,10 @@
 /* COLOR VARS */
 
 :root {
+    --chart-red: #c84b40;
+    --chart-red-darker: #993931;
+    --chart-blue: #41788e;
+
     --main-font-900: #212121;
     --main-font-800: #424242;
     --main-font-700: #757575;
@@ -72,13 +76,19 @@ em {
 }
 
 a {
+    transition: .75s all;
     text-decoration: none;
-    border-bottom: 1px dashed black;    
+    border-bottom: 1px dashed var(--chart-red);  
+    color: var(--chart-red);  
 }
 
 a:hover {
-    color: var(--main-font-900);
-    transition: all 1s;
+    color: var(--chart-red-darker);
+    border-bottom: 1px solid var(--chart-red-darker);
+}
+
+a:visited {
+
 }
 
 .contained {
@@ -124,11 +134,11 @@ nav a {
     display: inline;
     margin-right: 5%;
     color: var(--main-font-700);
-    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0); */
 }
 
 nav a:hover {
-    border-bottom: 1px dashed black;        
+    /* border-bottom: 1px dashed black; */
 }
 
 /* HERO STYLES */
@@ -250,8 +260,7 @@ nav a:hover {
     padding: 0 1rem;
     max-width: 30rem;
 
-    padding: 10% 0 0 10%;
-    line-height: 1.25;
+    padding: 10% 0 0 5%;
     transition: .3s filter;
 }
 
@@ -288,26 +297,39 @@ nav a:hover {
     display: block;
 }
 
+/* FULL OPACITY ON PRINT */
 @media print {
     .step {
         opacity: 1;
     }
 }
 
+/* ACKNOWLEDGEMENTS */
+
+.acknowledgements {
+    margin: 5rem auto;
+    max-width: 600px;
+}
+
 /* FOOTNOTE POPUP CSS */
 
 .footnote {
     position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted var(--main-font-900);
+    /* display: inline-block; */
+    cursor: help;
+    /* border-bottom: 1px dotted var(--main-font-900); */
+
+    color: var(--chart-blue);
+    border-bottom: 1px solid var(--chart-blue);
 }
 
 .footnote .footnotetext {
     visibility: hidden;
-    background-color: var(--main-font-900);
+    background-color: var(--main-font-800);
     color: #fff;
     text-align: left;
     border-radius: 6px;
+    padding: .5rem 1rem;
  
     /* Positioning for citation */
     position: absolute;
@@ -316,15 +338,11 @@ nav a:hover {
 
     top: 125%;
     left: 25%;
-    width: 240px;
+    width: 360px;
 
-    /* half of width: */
-    margin-left: -60px;
+    /* quarter of width: */
+    margin-left: -90px;
     transition: .5s all;
-}
-
-.footnotetext p {
-    margin: 0.5rem 1rem;
 }
 
 .footnote:hover .footnotetext {
