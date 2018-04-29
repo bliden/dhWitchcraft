@@ -58,8 +58,10 @@ function handleStepEnter(response) {
 
     // change img displayed based on active step
     // toggle image visibility based on idx
+    // console.log(response.index);
     imageSet.forEach(function( image, idx){
-        if( idx === response.index ){
+        if( Number(image.dataset.step) === response.index ){
+            // console.log(image.dataset.step, response.index);
             image.classList.add('is-active');
         } else {
             image.classList.remove('is-active');

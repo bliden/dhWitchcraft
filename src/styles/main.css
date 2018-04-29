@@ -211,22 +211,40 @@ nav a:hover {
 
 #scroll {
     position: relative;
-    border-top: 1px dashed #000;
-    border-bottom: 1px dashed #000;
+    border-top: 1px dashed var(--main-font-900);
+    border-bottom: 1px dashed var(--main-font-900);
+}
+
+.scroll__text {
+    /* IMPORTANT TO LAY ON TOP OF GRAPHIC */
+    position: relative; 
+
+    padding: 0 1rem;
+    max-width: 30rem;
+
+    padding: 10% 0 0 5%;
+    transition: .3s filter;
+}
+
+.step {
+    opacity: .3;
+    transition: all 1.5s;
+}
+
+.step.is-active {
+    opacity: 1;
 }
 
 .scroll__graphic {
     position: absolute;
     top: 0;
-    /* left: 0; */
+    left: 0;
     bottom: auto;
-    /* width: 100%; */
+    width: 100%;
+    /* padding: 2rem; */
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
-
-    right: 1rem;
-    width: 60%;
 }
 
 .scroll__graphic.is-fixed {
@@ -259,9 +277,11 @@ nav a:hover {
     -moz-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    transition: .3s filter, .3s opacity;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -271,23 +291,6 @@ nav a:hover {
     transition: .3s opacity,
                 .3s filter;
 } */
-
-.scroll__text {
-    padding: 0 1rem;
-    max-width: 30rem;
-
-    padding: 10% 0 0 5%;
-    transition: .3s filter;
-}
-
-.step {
-    opacity: .3;
-    transition: all 1.5s;
-}
-
-.step.is-active {
-    opacity: 1;
-}
 
 .blurry {
     filter: blur(20px);
@@ -299,18 +302,25 @@ nav a:hover {
     opacity: 0;
     visibility: hidden;
     display: none;
-    width: 95%;
+    max-width: 95%;
+    max-height: 40%;
+    width: auto;
+    height: auto;
 
     border: 3px solid rgba(0, 0, 0, .2);
     padding-right: 10px;
-    transition: .3s opacity,
-                .3s filter;
 }
 
 .driftImg.is-active {
     opacity: 1;
     visibility: visible;
     display: block;
+}
+
+.driftImg.imageplot {
+    max-height: 30%;
+    max-width: 30%;
+    padding: 5px;
 }
 
 /* FULL OPACITY ON PRINT */

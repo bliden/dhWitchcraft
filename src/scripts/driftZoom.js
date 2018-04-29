@@ -6,20 +6,22 @@ const text = document.querySelector('.scroll__text');
 // fns below blur & transparency the text & img on zoom
 
 function onShow(){
-    // chart.style.opacity = .5;
-	imageSet.forEach(function(image){
-		image.classList.toggle('blurry');
-	// text.classList.toggle('blurry');
-	});
+	chart.style.opacity = .5;
+	chart.classList.toggle('blurry');
+	// imageSet.forEach(function(image){
+	// 	image.classList.toggle('blurry');
+	// });
+	text.classList.toggle('blurry');
+
 };
 
 function onHide(){
-    // chart.style.opacity = 1;
-	// chart.classList.toggle('blurry');
-	imageSet.forEach(function(image){
-		image.classList.toggle('blurry');
-	})
-    // text.classList.toggle('blurry');
+    chart.style.opacity = 1;
+	chart.classList.toggle('blurry');
+	// imageSet.forEach(function(image){
+	// 	image.classList.toggle('blurry');
+	// });
+    text.classList.toggle('blurry');
 }
 
 var options = {
@@ -50,8 +52,8 @@ var options = {
 	// A DOM element to append the non-inline ZoomPane to.
 	// Required if `inlinePane !== true`.
 	
-	// paneContainer: document.querySelector('.scroll__graphic'),
-	paneContainer: document.querySelector('.chart'),
+	paneContainer: document.querySelector('.scroll__graphic'),
+	// paneContainer: document.querySelector('.chart'),
 	
 	// When to switch to an inline ZoomPane. This can be a boolean or
 	// an integer. If `true`, the ZoomPane will always be inline,
