@@ -36,13 +36,13 @@ function handleResize() {
     // zoom factor recalced on resize. smaller screen > larger zoom
     driftSet.forEach(function(drift){
         if( drift.triggerEl.classList.contains('boxOffice') ){
-            drift.zoomFactor = ( 600 / bodyWidth ) * 10**1;
+            drift.zoomFactor = ( 3.5 / bodyWidth ) * 10**3;
             // console.log(drift.zoomFactor);
         } else if( drift.triggerEl.classList.contains('imageplot') ){
-            drift.zoomFactor = ( 600 / bodyWidth ) * 10**1;
+            drift.zoomFactor = ( 6 / bodyWidth ) * 10**3;
             // console.log(drift.zoomFactor);
         } else {
-            drift.zoomFactor = ( 400 / bodyWidth ) * 10**1;
+            drift.zoomFactor = ( 4 / bodyWidth ) * 10**3;
         };
     });
 
