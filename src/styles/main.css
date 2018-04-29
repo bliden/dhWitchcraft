@@ -71,6 +71,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
 }
 
+h3 {
+    color: var(--chart-red-darker);
+}
+
 em {
     font-style: italic;
 }
@@ -134,11 +138,11 @@ nav a {
     display: inline;
     margin-right: 2rem;
     color: var(--main-font-700);
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0); */
+    border-bottom: 1px solid var(--main-font-700);
 }
 
 nav a:hover {
-    /* border-bottom: 1px dashed black; */
+    border-bottom: 1px dashed var(--chart-red-darker)
 }
 
 /* HERO STYLES */
