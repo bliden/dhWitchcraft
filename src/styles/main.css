@@ -323,6 +323,10 @@ nav a:hover {
     padding: 5px;
 }
 
+.driftImg.boxOffice {
+    max-height: 60%;
+}
+
 /* FULL OPACITY ON PRINT */
 @media print {
     .step {
