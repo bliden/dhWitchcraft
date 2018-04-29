@@ -2,6 +2,7 @@ import Drift from 'drift-zoom';
 import { imageSet, chart } from './imagePane';
 
 const text = document.querySelector('.scroll__text');
+const graphic = document.querySelector('.scroll__graphic');
 
 // fns below blur & transparency the text & img on zoom
 
@@ -12,7 +13,7 @@ function onShow(){
 	// 	image.classList.toggle('blurry');
 	// });
 	text.classList.toggle('blurry');
-
+	graphic.style.background = 'rgba(0, 0, 0, .05)';
 };
 
 function onHide(){
@@ -21,7 +22,8 @@ function onHide(){
 	// imageSet.forEach(function(image){
 	// 	image.classList.toggle('blurry');
 	// });
-    text.classList.toggle('blurry');
+	text.classList.toggle('blurry');
+	graphic.style.background = 'rgba(0, 0, 0, 0)';
 }
 
 var options = {
