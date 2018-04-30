@@ -84,6 +84,7 @@ a {
     text-decoration: none;
     border-bottom: 1px dashed var(--chart-red);  
     color: var(--chart-red);  
+    cursor: pointer;
 }
 
 a:hover {
@@ -93,6 +94,10 @@ a:hover {
 
 a:visited {
 
+}
+
+ul {
+    word-wrap: break-word;
 }
 
 .contained {
@@ -125,16 +130,17 @@ blockquote {
 /* HEADER STYLES */
 
 header {
-    /* padding-top: 2rem; */
-    position: absolute;
-    top: 2rem;
-    right: 1rem;
-    left: 50%;
+    padding-top: 2rem;
+    position: relative;
+    /* top: 2rem; */
+    /* right: 1rem; */
+    /* left: 50%; */
 }
 
 nav {
     text-align: right;
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
 }
 
@@ -149,17 +155,26 @@ nav a:hover {
     border-bottom: 1px dashed var(--chart-red-darker)
 }
 
+@media screen and (max-width: 900px){
+    nav {
+        flex-direction: column;
+    }
+    nav a {
+        padding: 5px 10px;
+        margin-right: 0;
+    }
+    header {
+        padding-top: 0rem;
+    }
+}
+
 /* HERO STYLES */
 
 .hero {
-    /* height: 87%; */
-    /* margin-top: 3%; */
+    margin-top: 2rem;
 }
 
 .title-card {
-    /* max-width: 800px; */
-    /* line-height: 1.15; */
-
     animation-name: titlefadein;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -180,6 +195,10 @@ nav a:hover {
 
 .title span {
     display: block;
+}
+
+.title span.mobilebreak {
+    display: inline-block;
 }
 
 .byline {
@@ -203,6 +222,8 @@ nav a:hover {
 .abstract-card p {
     padding-left: 2rem;
 }
+
+/* @media screen and (max-width: ) */
 
 @media screen and (max-width: 950px) {
     .title {
