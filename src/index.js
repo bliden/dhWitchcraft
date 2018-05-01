@@ -7,3 +7,4 @@ import './styles/main.css';
 import './scripts/onLoad';
 import './scripts/scrollama';
 import './scripts/driftZoom';
+import './scripts/luminousLightbox';

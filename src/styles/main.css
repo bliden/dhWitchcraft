@@ -285,6 +285,7 @@ nav a:hover {
     margin: 0 auto;
     padding: 5px;
     border: 3px solid rgba(0, 0, 0, .2);
+    margin-bottom: 2rem;
 }
 
 .scroll__text {
@@ -486,3 +487,10 @@ nav a:hover {
     border-style: solid;
     border-color: transparent transparent black transparent;
 } */
+
+/* LIGHTBOX STYLES (CROSS YOUR FINGERS) */
+
+.lum-lightbox-inner img {
+    background: #fff;
+    max-height: 100% !important;
+}
