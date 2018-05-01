@@ -61,10 +61,18 @@
 
 /* GENERAL STYLES */
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-family: 'Lora', serif;
     color: var(--main-font-900);
     line-height: 2;
+}
+
+body {
+    overflow: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -157,7 +165,7 @@ nav a:hover {
 
 @media screen and (max-width: 900px){
     nav {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
     nav a {
         padding: 5px 10px;
@@ -165,6 +173,11 @@ nav a:hover {
     }
     header {
         padding-top: 0rem;
+    }
+    nav {
+        font-size: .9rem;
+        line-height: 1.15;
+        justify-content: space-around;
     }
 }
 
@@ -203,7 +216,7 @@ nav a:hover {
 
 .byline {
     padding-left: 2rem;
-    line-spacing: 1.8;
+    line-height: 1.8;
 }
 
 .byline span {
@@ -223,17 +236,35 @@ nav a:hover {
     padding-left: 2rem;
 }
 
-/* @media screen and (max-width: ) */
-
 @media screen and (max-width: 950px) {
     .title {
         font-size: 5rem;
         overflow: hidden;
+        text-align: center;
     }
     .byline {
         max-width: 75%;
+        font-size: .9rem;
+        margin: 0 auto;
     }
+    .byline p {
+        text-indent: -2rem;
+    }
+    .abstract-card p {
+        padding-left: 0rem;
+    }
+}
 
+@media screen and (max-width: 500px) {
+    .title {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .title {
+        font-size: 3rem;
+    }
 }
 
 /* SCROLL SPECIFIC CSS */
@@ -242,6 +273,18 @@ nav a:hover {
     position: relative;
     border-top: 1px dashed var(--main-font-900);
     border-bottom: 1px dashed var(--main-font-900);
+}
+
+.mobileImg {
+    display: none;
+    visibility: hidden;
+    max-height: 400px;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+    margin: 0 auto;
+    padding: 5px;
+    border: 3px solid rgba(0, 0, 0, .2);
 }
 
 .scroll__text {
@@ -370,6 +413,22 @@ nav a:hover {
     }
 }
 
+@media screen and (max-width: 800px){
+    .mobileImg {
+        display: block;
+        visibility: visible;
+    }
+    .scroll__graphic {
+        display: none;
+        visibility: hidden;
+    }
+    .scroll__text {
+        max-width: 80%;
+        padding: 0;
+        margin: 0 auto;
+    }
+}
+
 /* ACKNOWLEDGEMENTS */
 
 .acknowledgements {
@@ -416,14 +475,14 @@ nav a:hover {
     opacity: 1;
 }
 
-.footnote .footnotetext::after {
+/* .footnote .footnotetext::after {
     z-index: 1;
     content: " ";
     position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
+    bottom: 100%;
     left: 25%;
     margin-left: 5px;
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent black transparent;
-}
+} */
