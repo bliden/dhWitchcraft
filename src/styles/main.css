@@ -472,7 +472,7 @@ nav a:hover {
     transition: .5s all;
 }
 
-.footnote:hover .footnotetext {
+.footnote:hover .footnotetext, .footnote:active .footnotetext {
     visibility: visible;
     opacity: 1;
 }
