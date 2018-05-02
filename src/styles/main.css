@@ -442,11 +442,12 @@ nav a:hover {
 .footnote {
     position: relative;
     /* display: inline-block; */
-    cursor: help;
+    /* cursor: help; */
     /* border-bottom: 1px dotted var(--main-font-900); */
     cursor: pointer;
 
     color: var(--chart-blue);
+    background: red;
     border-bottom: 1px solid var(--chart-blue);
 }
 
@@ -472,13 +473,17 @@ nav a:hover {
     transition: .5s all;
 }
 
-.footnote:hover .footnotetext, 
-.footnote:active .footnotetext, 
-.footnote:focus .footnotetext {
+.footnote .footnotetext.is-active{
     visibility: visible;
     opacity: 1;
 }
 
+@media screen and (min-width: 800px){
+    .footnote:hover .footnotetext {
+        visibility: visible;
+        opacity: 1;
+    }
+}
 /* .footnote .footnotetext::after {
     z-index: 1;
     content: " ";
