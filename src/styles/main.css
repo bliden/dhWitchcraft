@@ -14,38 +14,6 @@
 
 /* FONT IMPORTS */
 
-@font-face {
-    font-family: 'Codystar';
-    src:    url('../../node_modules/typeface-codystar/files/codystar-latin-300.woff2') format('woff2'),
-            url('../../node_modules/typeface-codystar/files/codystar-latin-300.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lora';
-    src: url('../../node_modules/typeface-lora/files/lora-latin-400.woff2') format('woff2'),
-         url('../../node_modules/typeface-lora/files/lora-latin-400.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Lora';
-    src: url('../../node_modules/typeface-lora/files/lora-latin-400italic.woff2') format('woff2'),
-         url('../../node_modules/typeface-lora/files/lora-latin-400italic.woff') format('woff');
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src:    url('../../node_modules/typeface-lato/files/lato-latin-400.woff2') format('woff2'),
-            url('../../node_modules/typeface-lato/files/lato-latin-400.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
 /* ANIMATIONS */
 
 @keyframes titlefadein {
