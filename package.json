@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "deploy": "webpack --mode=production  && gh-pages -d dist"
+    "deploy": "webpack --mode=production  && gh-pages -d dist --remove '!CNAME'"
   },
   "author": "Benjamin Liden",
   "license": "ISC",
