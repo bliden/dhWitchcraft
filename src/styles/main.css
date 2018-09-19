@@ -9,7 +9,7 @@
     --main-font-800: #424242;
     --main-font-700: #757575;
 
-    font-size: 16px;
+    font-size: 18px;
 }
 
 /* FONT IMPORTS */
@@ -404,6 +404,14 @@ nav a:hover {
 .acknowledgements {
     margin: 5rem auto;
     max-width: 600px;
+}
+
+/* TOOLTIP CSS */
+
+.tooltip {
+    cursor: pointer;
+    color: var(--chart-blue);
+    border-bottom: 1px solid var(--chart-blue);
 }
 
 /* FOOTNOTE POPUP CSS */
