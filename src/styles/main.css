@@ -98,6 +98,16 @@ blockquote {
     padding-left: 1rem;
 }
 
+@media screen and (max-width: 500px) {
+    .contained {
+        width: 90%;
+    }
+    blockquote {
+        margin-left: 1rem;
+        margin-right: .8rem;
+    }
+}
+
 /* HEADER STYLES */
 
 header {
