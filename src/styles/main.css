@@ -9,10 +9,8 @@
     --main-font-800: #424242;
     --main-font-700: #757575;
 
-    font-size: 18px;
+    font-size: 16px;
 }
-
-/* FONT IMPORTS */
 
 /* ANIMATIONS */
 
@@ -66,10 +64,6 @@ a {
 a:hover {
     color: var(--chart-red-darker);
     border-bottom: 1px solid var(--chart-red-darker);
-}
-
-a:visited {
-
 }
 
 ul {
@@ -133,15 +127,12 @@ nav a:hover {
 }
 
 @media screen and (max-width: 900px){
-    nav {
-        /* flex-direction: column; */
-    }
     nav a {
         padding: 5px 10px;
         margin-right: 0;
     }
     header {
-        padding-top: 0rem;
+        padding-top: .5rem;
     }
     nav {
         font-size: .9rem;
