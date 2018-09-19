@@ -1,3 +1,5 @@
+// footnote toggles
+
 let footNotes = document.querySelectorAll('.footnote');
 
 for( let note of footNotes ){

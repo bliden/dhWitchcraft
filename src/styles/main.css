@@ -414,64 +414,6 @@ nav a:hover {
     border-bottom: 1px solid var(--chart-blue);
 }
 
-/* FOOTNOTE POPUP CSS */
-
-.footnote {
-    position: relative;
-    /* display: inline-block; */
-    /* cursor: help; */
-    /* border-bottom: 1px dotted var(--main-font-900); */
-    cursor: pointer;
-
-    color: var(--chart-blue);
-    border-bottom: 1px solid var(--chart-blue);
-}
-
-.footnote .footnotetext {
-    visibility: hidden;
-    background-color: var(--main-font-800);
-    color: #fff;
-    text-align: left;
-    border-radius: 6px;
-    padding: .5rem 1rem;
- 
-    /* Positioning for citation */
-    position: absolute;
-    z-index: 1;
-    opacity: 0;
-
-    top: 125%;
-    left: 25%;
-    width: 360px;
-
-    /* quarter of width: */
-    margin-left: -90px;
-    transition: .5s all;
-}
-
-.footnote .footnotetext.is-active{
-    visibility: visible;
-    opacity: 1;
-}
-
-@media screen and (min-width: 800px){
-    .footnote:hover .footnotetext {
-        visibility: visible;
-        opacity: 1;
-    }
-}
-/* .footnote .footnotetext::after {
-    z-index: 1;
-    content: " ";
-    position: absolute;
-    bottom: 100%;
-    left: 25%;
-    margin-left: 5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent black transparent;
-} */
-
 /* LIGHTBOX STYLES (CROSS YOUR FINGERS) */
 
 .lum-lightbox-inner img {
