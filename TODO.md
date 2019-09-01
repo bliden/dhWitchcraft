@@ -1,0 +1,4 @@
+- remove old files:
+  - olddist
+  - oldsrc
+  - package.old.json
