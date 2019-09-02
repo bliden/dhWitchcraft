@@ -10,7 +10,7 @@ import {
   OnDestroy
 } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { map, debounce, debounceTime, takeUntil } from "rxjs/operators";
+import { map, debounceTime, takeUntil } from "rxjs/operators";
 import { Observable, fromEvent, Subscription, Subject } from "rxjs";
 import scrollama from "scrollama";
 import { DriftzoomDirective } from "src/app/directives/driftzoom.directive";

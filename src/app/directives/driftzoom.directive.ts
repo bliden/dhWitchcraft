@@ -111,7 +111,7 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
     // 	image.classList.toggle('blurry');
     // });
     text.classList.toggle("blurry");
-    graphic.style.background = "rgba(0, 0, 0, .05)";
+    graphic.style.background = "rgba(0, 0, 0, 0)";
   }
 
   onHide() {
