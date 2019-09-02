@@ -14,6 +14,8 @@ import { ScrollerComponent } from "./components/scroller/scroller.component";
 import { WitchingHourComponent } from "./components/witchinghour/witchinghour.component";
 import { AcknowledgementsComponent } from "./components/acknowledgements/acknowledgements.component";
 import { TippyDirective } from './directives/tippy.directive';
+import { LuminousLightboxDirective } from './directives/luminous-lightbox.directive';
+import { DriftzoomDirective } from './directives/driftzoom.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TippyDirective } from './directives/tippy.directive';
     ScrollerComponent,
     WitchingHourComponent,
     AcknowledgementsComponent,
-    TippyDirective
+    TippyDirective,
+    LuminousLightboxDirective,
+    DriftzoomDirective
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

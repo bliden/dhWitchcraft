@@ -1,6 +1,7 @@
 import { enableProdMode } from "@angular/core";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
+// this is a necessary polyfill for scrollama
 import "intersection-observer";
 
 import { AppModule } from "./app/app.module";
