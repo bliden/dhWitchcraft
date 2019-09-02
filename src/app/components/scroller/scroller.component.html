@@ -1,6 +1,6 @@
-<section id="scroll">
+<section id="scroll" #scrollContainer>
   <div class="scroll__graphic" #scrollGraphic>
-    <div class="chart">
+    <div class="chart" #chart>
       <img
         driftZoom
         [scrollGraphic]="scrollGraphicRef"
@@ -83,7 +83,7 @@
       />
     </div>
   </div>
-  <div class="scroll__text">
+  <div class="scroll__text" #scrollText>
     <div #step class="step" data-step="0">
       <h3>Corpus Development and Collection</h3>
       <img
