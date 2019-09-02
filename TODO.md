@@ -8,7 +8,7 @@
 
 - thin out any unused font-weights
 
-  - (see index.html font <link>s)
+  - (see index.html font `<link>`s)
   - ensure correct sizes are being used
 
 - routerLinkActive class...
@@ -24,4 +24,4 @@
 - lazy load in images to chart [see angular in depth](https://blog.angularindepth.com/a-modern-solution-to-lazy-loading-using-intersection-observer-9280c149bbc)
 
 - don't iterate over every image in scroller. use ng directives
-- when getting arrays of refs in scroller, use { read: ElementRef } or similar to avoid mapping
+- abstract `styles.scss` into component stylesheets

@@ -5,20 +5,24 @@ import {
   ElementRef,
   AfterViewInit,
   ViewChildren,
-  HostListener
+  HostListener,
+  ChangeDetectionStrategy,
+  OnDestroy
 } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { map, debounce, debounceTime } from "rxjs/operators";
-import { Observable, fromEvent, Subscription } from "rxjs";
+import { map, debounce, debounceTime, takeUntil } from "rxjs/operators";
+import { Observable, fromEvent, Subscription, Subject } from "rxjs";
 import scrollama from "scrollama";
 import { DriftzoomDirective } from "src/app/directives/driftzoom.directive";
+import { RequiredRefs } from "src/app/types/driftZoom";
 
 @Component({
   selector: "app-scroller",
   templateUrl: "./scroller.component.html",
-  styleUrls: ["./scroller.component.scss"]
+  styleUrls: ["./scroller.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScrollerComponent implements OnInit, AfterViewInit {
+export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
   // this observable is emits true whenever the viewport is <959px
   isMobile$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small])
@@ -33,24 +37,37 @@ export class ScrollerComponent implements OnInit, AfterViewInit {
   @ViewChildren(DriftzoomDirective) images: any;
   stepRefs: any[];
   imageRefs: any[];
+  driftZoomRefs: RequiredRefs;
   scroller: any;
+
   resizeListener: Subscription;
+  destroy$ = new Subject();
 
   // listener for window resize. use to redraw scroller
   @HostListener("window:resize", ["$event"])
   onResize(event) {
-    console.log(event.target.innerWidth, event.target.innerHeight);
     this.handleResize();
   }
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.driftZoomRefs = {
+      scrollGraphic: this.scrollGraphicRef,
+      scrollText: this.scrollTextRef,
+      chart: this.chartRef
+    };
+  }
 
   ngAfterViewInit() {
     this.buildRefArrays();
     this.initScrollama();
     this.windowResizeListener();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   handleResize() {
@@ -100,7 +117,10 @@ export class ScrollerComponent implements OnInit, AfterViewInit {
 
   windowResizeListener() {
     this.resizeListener = fromEvent(window, "resize")
-      .pipe(debounceTime(500))
+      .pipe(
+        debounceTime(500),
+        takeUntil(this.destroy$)
+      )
       .subscribe(this.onResize);
   }
 

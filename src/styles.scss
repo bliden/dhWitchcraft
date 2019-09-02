@@ -276,12 +276,12 @@ nav a:hover {
   max-width: 30rem;
 
   padding: 10% 0 0 5%;
-  transition: 0.3s filter;
+  // transition: 0.3s filter;
 }
 
 .step {
   opacity: 0.3;
-  transition: all 1.5s;
+  // transition: all 1.5s;
 }
 
 .step.is-active {
@@ -330,7 +330,7 @@ nav a:hover {
   -moz-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  transition: 0.3s filter, 0.3s opacity;
+  // transition: 0.3s filter, 0.3s opacity;
 
   display: flex;
   flex-direction: column;
@@ -351,7 +351,7 @@ nav a:hover {
 }
 
 .driftImg {
-  transition: 1s all ease-out;
+  // transition: 1s all ease-out;
   opacity: 0;
   visibility: hidden;
   display: none;

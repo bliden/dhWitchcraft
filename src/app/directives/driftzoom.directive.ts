@@ -35,7 +35,6 @@ var options = {
   // A DOM element to append the non-inline ZoomPane to.
   // Required if `inlinePane !== true`.
 
-  paneContainer: document.querySelector(".scroll__graphic"),
   // paneContainer: document.querySelector('.chart'),
 
   // When to switch to an inline ZoomPane. This can be a boolean or
@@ -72,11 +71,18 @@ var options = {
   touchBoundingBox: false
 };
 
+type RequiredRefs = {
+  scrollGraphic: ElementRef;
+  chart: ElementRef;
+  scrollText: ElementRef;
+};
+
 @Directive({
   selector: "[driftZoom]"
 })
 export class DriftzoomDirective implements OnInit, AfterViewInit {
-  @Input() scrollGraphic: ElementRef;
+  // @Input() scrollGraphic: ElementRef;
+  @Input() refs: RequiredRefs;
 
   constructor(private el: ElementRef) {
     this.el = el;
@@ -85,9 +91,40 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
+    // initialize drift zoom once View is created only
     new Drift(this.el.nativeElement, {
       ...options,
-      paneContainer: this.scrollGraphic.nativeElement
+      paneContainer: this.refs.scrollGraphic.nativeElement,
+      onShow: this.onShow.bind(this), // must bind fn to access class scope
+      onHide: this.onHide.bind(this) // must bind fn to access class scope
     });
+  }
+
+  onShow() {
+    const chart = this.refs.chart.nativeElement;
+    const text = this.refs.scrollText.nativeElement;
+    const graphic = this.refs.scrollGraphic.nativeElement;
+
+    chart.style.opacity = 0.5;
+    chart.classList.toggle("blurry");
+    // imageSet.forEach(function(image){
+    // 	image.classList.toggle('blurry');
+    // });
+    text.classList.toggle("blurry");
+    graphic.style.background = "rgba(0, 0, 0, .05)";
+  }
+
+  onHide() {
+    const chart = this.refs.chart.nativeElement;
+    const text = this.refs.scrollText.nativeElement;
+    const graphic = this.refs.scrollGraphic.nativeElement;
+
+    chart.style.opacity = 1;
+    chart.classList.toggle("blurry");
+    // imageSet.forEach(function(image){
+    // 	image.classList.toggle('blurry');
+    // });
+    text.classList.toggle("blurry");
+    graphic.style.background = "rgba(0, 0, 0, 0)";
   }
 }
