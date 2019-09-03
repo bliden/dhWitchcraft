@@ -84,6 +84,10 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
   // @Input() scrollGraphic: ElementRef;
   @Input() refs: RequiredRefs;
 
+  chart: HTMLElement;
+  text: HTMLElement;
+  graphic: HTMLElement;
+
   constructor(private el: ElementRef) {
     this.el = el;
   }
@@ -91,40 +95,36 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
+    this.chart = this.refs.chart.nativeElement;
+    this.text = this.refs.scrollText.nativeElement;
+    this.graphic = this.refs.scrollGraphic.nativeElement;
+
     // initialize drift zoom once View is created only
     new Drift(this.el.nativeElement, {
       ...options,
-      paneContainer: this.refs.scrollGraphic.nativeElement,
+      paneContainer: this.graphic,
       onShow: this.onShow.bind(this), // must bind fn to access class scope
       onHide: this.onHide.bind(this) // must bind fn to access class scope
     });
   }
 
   onShow() {
-    const chart = this.refs.chart.nativeElement;
-    const text = this.refs.scrollText.nativeElement;
-    const graphic = this.refs.scrollGraphic.nativeElement;
-
-    chart.style.opacity = 0.5;
-    chart.classList.toggle("blurry");
+    this.chart.style.opacity = "0.5";
+    this.chart.classList.toggle("blurry");
     // imageSet.forEach(function(image){
     // 	image.classList.toggle('blurry');
     // });
-    text.classList.toggle("blurry");
-    graphic.style.background = "rgba(0, 0, 0, 0)";
+    this.text.classList.toggle("blurry");
+    this.graphic.style.background = "rgba(0, 0, 0, 0)";
   }
 
   onHide() {
-    const chart = this.refs.chart.nativeElement;
-    const text = this.refs.scrollText.nativeElement;
-    const graphic = this.refs.scrollGraphic.nativeElement;
-
-    chart.style.opacity = 1;
-    chart.classList.toggle("blurry");
+    this.chart.style.opacity = "1";
+    this.chart.classList.toggle("blurry");
     // imageSet.forEach(function(image){
     // 	image.classList.toggle('blurry');
     // });
-    text.classList.toggle("blurry");
-    graphic.style.background = "rgba(0, 0, 0, 0)";
+    this.text.classList.toggle("blurry");
+    this.graphic.style.background = "rgba(0, 0, 0, 0)";
   }
 }
