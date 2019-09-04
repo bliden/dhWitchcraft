@@ -40,10 +40,6 @@ html {
   line-height: 2;
 }
 
-body {
-  overflow: none;
-}
-
 h1,
 h2,
 h3,
@@ -178,7 +174,7 @@ nav a:hover {
 .title {
   font-family: "Codystar", sans-serif;
   font-weight: 300;
-  font-size: 7rem;
+  font-size: 6rem;
   letter-spacing: 0.5rem;
   line-height: 1.15;
   margin: 0;
@@ -217,7 +213,7 @@ nav a:hover {
 
 @media screen and (max-width: 950px) {
   .title {
-    font-size: 5rem;
+    font-size: 4rem;
     overflow: hidden;
     text-align: center;
   }
@@ -430,4 +426,8 @@ nav a:hover {
 .lum-lightbox-inner img {
   background: #fff;
   max-height: 100% !important;
+}
+
+.lum-lightbox {
+  background: rgba(0, 0, 0, 0.6);
 }
