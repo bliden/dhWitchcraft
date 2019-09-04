@@ -12,7 +12,8 @@ import { ScrollerComponent } from "./components/scroller/scroller.component";
 import { TippyDirective } from "./directives/tippy.directive";
 import { LuminousLightboxDirective } from "./directives/luminous-lightbox.directive";
 import { DriftzoomDirective } from "./directives/driftzoom.directive";
-import { SectionComponent } from "./components/section/section.component";
+import { SharedModule } from "./modules/shared/shared.module";
+import { FiguresModule } from "./features/figures/figures.module";
 
 @NgModule({
   declarations: [
@@ -25,10 +26,9 @@ import { SectionComponent } from "./components/section/section.component";
     ScrollerComponent,
     TippyDirective,
     LuminousLightboxDirective,
-    DriftzoomDirective,
-    SectionComponent
+    DriftzoomDirective
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, SharedModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
