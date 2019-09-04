@@ -6,14 +6,19 @@ import {
   AfterViewInit,
   ViewChildren,
   ChangeDetectionStrategy,
-  OnDestroy
+  OnDestroy,
+  QueryList
 } from "@angular/core";
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { map, debounceTime, takeUntil } from "rxjs/operators";
+import { map, debounceTime, takeUntil, tap } from "rxjs/operators";
 import { Observable, fromEvent, Subscription, Subject } from "rxjs";
 import scrollama from "scrollama";
 import { DriftzoomDirective } from "src/app/directives/driftzoom.directive";
 import { RequiredRefs } from "src/app/types/driftZoom";
+import { Drift } from "src/assets/scripts/Drift";
+
+const getNativeElement = el => el.nativeElement;
+const getDriftInstance = directive => directive.drift;
 
 @Component({
   selector: "app-scroller",
@@ -32,12 +37,16 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild("scrollText", { static: true }) scrollTextRef: ElementRef;
   @ViewChild("scrollGraphic", { static: true }) scrollGraphicRef: ElementRef;
   @ViewChild("chart", { static: true }) chartRef: ElementRef;
+
   @ViewChildren("step") steps: any;
-  @ViewChildren(DriftzoomDirective) images: any;
-  stepRefs: any[];
-  imageRefs: any[];
+  @ViewChildren(DriftzoomDirective)
+  driftZoomInstances: QueryList<DriftzoomDirective>;
+
+  stepRefs: HTMLElement[];
+  imageRefs: HTMLElement[];
+  driftInstanceRefs: Drift[];
   driftZoomRefs: RequiredRefs;
-  scroller: any;
+  scroller: any; // scrollama instance
 
   resizeListener: Subscription;
   destroy$ = new Subject();
@@ -91,20 +100,18 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
     chart.style.width = chartWidth + "px";
     chart.style.height = chartHeight + "px";
 
-    // zoom factor recalced on resize. smaller screen > larger zoom
-    // driftSet.forEach(function(drift) {
-    //   if (drift.triggerEl.classList.contains("boxOffice")) {
-    //     drift.zoomFactor = (3.5 / bodyWidth) * 10 ** 3;
-    //     // console.log(drift.zoomFactor);
-    //   } else if (drift.triggerEl.classList.contains("imageplot")) {
-    //     drift.zoomFactor = (6 / bodyWidth) * 10 ** 3;
-    //     // console.log(drift.zoomFactor);
-    //   } else {
-    //     drift.zoomFactor = (4 / bodyWidth) * 10 ** 3;
-    //   }
-    // });
+    // zoom factor recalced on resize. smaller screen -> larger zoom
+    this.driftInstanceRefs.forEach(drift => {
+      if (drift.triggerEl.classList.contains("boxOffice")) {
+        drift.zoomFactor = (3.5 / bodyWidth) * 10 ** 3;
+      } else if (drift.triggerEl.classList.contains("imageplot")) {
+        drift.zoomFactor = (6 / bodyWidth) * 10 ** 3;
+      } else {
+        drift.zoomFactor = (4 / bodyWidth) * 10 ** 3;
+      }
+    });
 
-    // 4. tell scrollama to update new elem dmensions
+    // 4. tell scrollama to update new elem dimensions
     this.scroller.resize();
   }
 
@@ -118,13 +125,14 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /*
-    map over the QueryLists and return an array of nativeElements
+    map over the QueryLists and return an array of nativeElements or driftInstances
   */
   buildRefArrays() {
-    this.stepRefs = this.steps._results.map(el => el.nativeElement);
-    this.imageRefs = this.images._results.map(
-      directive => directive.el.nativeElement
-    );
+    this.stepRefs = this.steps.map(getNativeElement);
+    this.imageRefs = this.driftZoomInstances
+      .map(dir => dir.el)
+      .map(getNativeElement);
+    this.driftInstanceRefs = this.driftZoomInstances.map(getDriftInstance);
   }
 
   /*

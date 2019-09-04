@@ -5,7 +5,7 @@ import {
   AfterViewInit,
   Input
 } from "@angular/core";
-import Drift from "drift-zoom";
+import Drift from "src/assets/scripts/Drift"; // not node_modules
 
 var options = {
   // Prefix for generated element class names (e.g. `my-ns` will
@@ -84,11 +84,12 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
   // @Input() scrollGraphic: ElementRef;
   @Input() refs: RequiredRefs;
 
+  public drift: Drift;
   chart: HTMLElement;
   text: HTMLElement;
   graphic: HTMLElement;
 
-  constructor(private el: ElementRef) {
+  constructor(public el: ElementRef) {
     this.el = el;
   }
 
@@ -100,7 +101,7 @@ export class DriftzoomDirective implements OnInit, AfterViewInit {
     this.graphic = this.refs.scrollGraphic.nativeElement;
 
     // initialize drift zoom once View is created only
-    new Drift(this.el.nativeElement, {
+    this.drift = new Drift(this.el.nativeElement, {
       ...options,
       paneContainer: this.graphic,
       onShow: this.onShow.bind(this), // must bind fn to access class scope
