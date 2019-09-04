@@ -23,7 +23,6 @@ export class FiguresService {
   }
 
   getMetadata(id: string): Movie {
-    debugger;
     return this.movies.find(el => el.id === parseInt(id));
   }
 }

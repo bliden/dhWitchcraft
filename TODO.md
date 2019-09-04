@@ -11,3 +11,4 @@
 
 - abstract `styles.scss` into component stylesheets
 - scrolling list, as with [angular.io docs](https://angular.io/api/core/QueryList)
+- change `title` on `section.component` and `heading.component` to something else. heading?
