@@ -5,7 +5,6 @@ import {
   ElementRef,
   AfterViewInit,
   ViewChildren,
-  HostListener,
   ChangeDetectionStrategy,
   OnDestroy
 } from "@angular/core";
@@ -42,12 +41,6 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
 
   resizeListener: Subscription;
   destroy$ = new Subject();
-
-  // listener for window resize. use to redraw scroller
-  @HostListener("window:resize", ["$event"])
-  onResize(event) {
-    this.handleResize();
-  }
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
@@ -118,10 +111,10 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
   windowResizeListener() {
     this.resizeListener = fromEvent(window, "resize")
       .pipe(
-        debounceTime(500),
+        // debounceTime(500),
         takeUntil(this.destroy$)
       )
-      .subscribe(this.onResize);
+      .subscribe(this.handleResize.bind(this)); // must bind this to access class props
   }
 
   /*
@@ -163,13 +156,11 @@ export class ScrollerComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       })
       .onContainerEnter(response => {
-        console.log("!!!", response);
         const graphic = this.scrollGraphicRef.nativeElement;
         graphic.classList.add("is-fixed");
         graphic.classList.remove("is-bottom");
       })
       .onContainerExit(response => {
-        console.log("!!!", response);
         const graphic = this.scrollGraphicRef.nativeElement;
         graphic.classList.remove("is-fixed");
         if (response.direction === "down") {

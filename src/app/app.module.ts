@@ -13,7 +13,6 @@ import { TippyDirective } from "./directives/tippy.directive";
 import { LuminousLightboxDirective } from "./directives/luminous-lightbox.directive";
 import { DriftzoomDirective } from "./directives/driftzoom.directive";
 import { SectionComponent } from "./components/section/section.component";
-import { FiguresPageComponent } from "./pages/figures/figures.component";
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { FiguresPageComponent } from "./pages/figures/figures.component";
     TippyDirective,
     LuminousLightboxDirective,
     DriftzoomDirective,
-    SectionComponent,
-    FiguresPageComponent
+    SectionComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
